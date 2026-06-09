@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroGuardian | Diagnóstico de Solo</title>
+  <meta name="description" content="AgroGuardian é um sistema educativo de diagnóstico de solo para agricultura sustentável, com indicadores simulados, recomendações e simulador de correção.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#5E7156">
+  <meta property="og:title" content="AgroGuardian | Diagnóstico de Solo">
+  <meta property="og:description" content="Diagnóstico educativo de solo, culturas, práticas sustentáveis e simulador agrícola em HTML, CSS e JavaScript puro.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero-agroguardian.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" data-page-link="home" aria-label="AgroGuardian Home">
+      <span class="brand-mark" aria-hidden="true">🌾</span>
+      <span>AgroGuardian</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="#home" data-page-link="home">Início</a>
+      <a href="#culturas" data-page-link="culturas">Culturas</a>
+      <a href="#diagnostico" data-page-link="diagnostico">Diagnóstico</a>
+      <a href="#conhecimento" data-page-link="conhecimento">Central de Conhecimento</a>
+      <a href="#simulador" data-page-link="simulador">Simulador</a>
+      <a href="#sustentabilidade" data-page-link="sustentabilidade">Sustentabilidade</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page active hero-page" id="home" data-page="home">
+      <div class="hero-bg" role="img" aria-label="Sensor agrícola em campo com lavoura saudável"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Diagnóstico inteligente para agricultura sustentável</p>
+        <h1>Descubra o que impede sua lavoura de atingir o máximo potencial.</h1>
+        <p>
+          O AgroGuardian utiliza indicadores simulados do solo para identificar problemas
+          que afetam a produtividade agrícola e sugerir práticas sustentáveis.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#diagnostico" data-page-link="diagnostico">Iniciar Diagnóstico</a>
+          <a class="btn secondary" href="#conhecimento" data-page-link="conhecimento">Central de Conhecimento</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page section-page" id="culturas" data-page="culturas">
+      <div class="section-head">
+        <p class="eyebrow">Culturas monitoradas</p>
+        <h2>Selecione uma cultura para analisar riscos e recomendações.</h2>
+      </div>
+      <div class="crop-list" id="cropList"></div>
+    </section>
+
+    <section class="page section-page" id="diagnostico" data-page="diagnostico">
+      <div class="diagnostic-layout">
+        <div class="diagnostic-main">
+          <div class="section-head compact">
+            <p class="eyebrow">Diagnóstico simulado</p>
+            <h2 id="diagnosticTitle">Diagnóstico - Soja</h2>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              Cultura
+              <select id="diagnosticCrop"></select>
+            </label>
+            <label>
+              Problema principal
+              <select id="diagnosticProblem">
+                <option value="acidez">Solo ácido</option>
+                <option value="compactacao">Compactação elevada</option>
+                <option value="materia">Baixa matéria orgânica</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="indicator-stack is-hidden zoom-in" id="indicatorStack"></div>
+
+          <div class="attention-box is-hidden" id="attentionBox">
+            <div class="attention-head">
+              <strong>Atenção</strong>
+              <span id="healthLabel">Saúde do Solo: 68%</span>
+            </div>
+            <div class="soil-meter" id="soilMeter" aria-label="Medidor de saúde do solo"></div>
+            <small id="situationLabel">Situação: Atenção</small>
+          </div>
+
+          <div class="diagnostic-panels is-hidden" id="diagnosticPanels">
+            <article class="diagnostic-problems fade-left">
+              <h3>Problemas Identificados</h3>
+              <ul id="problemList"></ul>
+            </article>
+            <article>
+              <h3>Estimativa de Perdas</h3>
+              <dl>
+                <div><dt>Produtividade Atual</dt><dd id="currentYield">78%</dd></div>
+                <div><dt>Produtividade Potencial</dt><dd>100%</dd></div>
+                <div><dt>Perda Estimada</dt><dd id="lossEstimate">22%</dd></div>
+              </dl>
+            </article>
+            <article>
+              <h3>Impactos Estimados</h3>
+              <ul id="impactList"></ul>
+            </article>
+          </div>
+        </div>
+
+        <aside class="recommendation-panel is-hidden fade-right" id="recommendationPanel">
+          <h3>Soluções Recomendadas</h3>
+          <div id="solutionList"></div>
+          <h3>Benefícios da Correção</h3>
+          <ul class="check-list">
+            <li>Menor uso de fertilizantes</li>
+            <li>Melhor retenção de água</li>
+            <li>Menor risco de erosão</li>
+            <li>Agricultura mais sustentável</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page knowledge-page" id="conhecimento" data-page="conhecimento">
+      <div class="knowledge-title">
+        <span class="brand-mark" aria-hidden="true">🌾</span>
+        <div>
+          <p class="eyebrow">Central de Conhecimento</p>
+          <h2>Práticas sustentáveis para saúde do solo.</h2>
+        </div>
+      </div>
+      <div class="knowledge-table" id="knowledgeTable"></div>
+    </section>
+
+    <section class="page section-page" id="simulador" data-page="simulador">
+      <div class="section-head">
+        <p class="eyebrow">Simulador</p>
+        <h2>Simule investimentos e benefícios para sua produção.</h2>
+      </div>
+
+      <div class="simulator-grid">
+        <article class="control-card">
+          <h3>Selecione sua Cultura</h3>
+          <div class="option-list" id="simCropOptions"></div>
+        </article>
+        <article class="control-card">
+          <h3>Informe seus Hectares</h3>
+          <label class="range-label">
+            <span>Total: <strong id="hectareValue">20</strong> hectares</span>
+            <input id="hectares" type="range" min="5" max="200" value="20" step="5">
+          </label>
+        </article>
+        <article class="control-card">
+          <h3>Selecione seu Problema</h3>
+          <div class="option-list" id="simProblemOptions"></div>
+        </article>
+      </div>
+
+      <div class="simulator-action">
+        <button class="btn primary large" type="button" id="runSimulation">Gerar Simulação</button>
+      </div>
+
+      <div class="result-panel is-hidden fade-up" id="simulationResult">
+        <h3>Resultado</h3>
+        <div class="result-grid">
+          <article>
+            <span class="result-icon">💰</span>
+            <strong>Nível de Investimento</strong>
+            <p id="investmentLevel">Médio</p>
+          </article>
+          <article>
+            <span class="result-icon">⏳</span>
+            <strong>Tempo de Retorno</strong>
+            <p id="returnTime">6 a 12 meses</p>
+          </article>
+          <article>
+            <span class="result-icon">📈</span>
+            <strong>Benefícios Esperados</strong>
+            <ul id="expectedBenefits"></ul>
+          </article>
+          <article>
+            <span class="result-icon">🌎</span>
+            <strong>Benefícios Ambientais</strong>
+            <ul id="environmentBenefits"></ul>
+          </article>
+        </div>
+        <div class="comparison">
+          <div>
+            <h4>Situação Atual</h4>
+            <div class="bar-meter warning" id="currentBar"></div>
+          </div>
+          <div>
+            <h4>Após Correção</h4>
+            <div class="bar-meter success" id="correctedBar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page section-page" id="sustentabilidade" data-page="sustentabilidade">
+      <div class="section-head">
+        <p class="eyebrow">Sustentabilidade</p>
+        <h2>Práticas para preservar recursos naturais e aumentar produtividade.</h2>
+      </div>
+      <div class="sustainability-grid" id="sustainabilityGrid"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

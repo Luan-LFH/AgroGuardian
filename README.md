@@ -1,5 +1,5 @@
 Objetivo AgroGuardian: 
-Identificar os problemas presentes no solo para saber o motivo do porque de não estar gerando uma boa safra.
+Identificar os problemas presentes no solo para saber o motivo de não estar gerando uma boa safra.
 
 Justificativa:
 

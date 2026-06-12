@@ -1,5 +1,5 @@
 Objetivo AgroGuardian: 
-Identificar os nivéis de degradação presentes no solo para saber o motivo dele não estar gerando uma boa safra.
+Identificar os problemas presentes no solo para saber o motivo do porque de não estar gerando uma boa safra.
 
 Justificativa:
 
